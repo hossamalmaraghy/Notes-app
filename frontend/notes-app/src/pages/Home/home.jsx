@@ -1,11 +1,16 @@
 import React from 'react'
+import Navbar from '../../components/Navbar/navbar'
 
 const Home = () => {
   return (
-    <div>
-      Home  
+    <>
+    <Navbar />
+
+    <div className="container mx-auto">
+      
     </div>
+    </>
   )
 }
 
-export default Home
+export default Home 
