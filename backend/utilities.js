@@ -11,8 +11,8 @@ function authenticateToken(req, res, next) {
         req.user = user;
         next();
     });
-}
+};
 
-MediaSourceHandle.exports = {
+module.exports = {
     authenticateToken,
 }
