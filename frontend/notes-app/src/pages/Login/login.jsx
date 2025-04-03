@@ -10,7 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -35,10 +35,16 @@ const Login = () => {
       });
 
       // Handle successful login response
+      if (response.data && response.data.error) {
+        setError(response.data.message);
+        return
+      }
+
       if (response.data && response.data.accessToken) {
         localStorage.setItem('token', response.data.accessToken);
         navigate('/dashboard');
       }
+
     } catch (error) {
       // Handle login error
       if (error.response && error.response.data && error.response.data.message) {
