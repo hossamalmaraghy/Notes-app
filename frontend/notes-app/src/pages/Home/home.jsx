@@ -4,6 +4,9 @@ import NoteCard from '../../components/Cards/NoteCard'
 import { MdAdd } from 'react-icons/md'
 import AddEditNotes from './AddEditNotes'
 import Modal from 'react-modal'
+import { useNavigate } from 'react-router-dom'
+import axiosInstance from '../../utils/axiosInstance'
+import { useEffect } from 'react'
 
 const Home = () => {
 
@@ -13,10 +16,33 @@ const Home = () => {
     data: null,
   });
 
+  const [userInfo, setUserInfo] = useState(null);
+
+  const navigate = useNavigate();
+
+  // Get User Info
+  const getUserInfo = async () => {
+    try {
+      const response = await axiosInstance.get('/get-user');
+      if (response.data && response.data.user) {
+        setUserInfo(response.data.user);
+      }
+    } catch (error) {
+      if (error.response.status === 401) {
+        localStorage.clear();
+        navigate('/login');
+      }
+    }
+  };
+
+  useEffect(() => {
+    getUserInfo();
+    return () => {};
+  }, []);
 
   return (
     <>
-    <Navbar />
+    <Navbar userInfo={userInfo}/>
 
     <div className="container mx-auto">
 
@@ -31,56 +57,6 @@ const Home = () => {
         onDelete={() => {}}
         onPinNote={() => {}}
       />
-      {/* <NoteCard 
-        title='Meeting on 7th April'
-        date='3rd Apr 2025'
-        content='Meeting on 7th April 2025'
-        tags='#Meeting'
-        isPinned={true}
-        onEdit={() => {}}
-        onDelete={() => {}}
-        onPinNote={() => {}}
-      />
-      <NoteCard 
-        title='Meeting on 7th April'
-        date='3rd Apr 2025'
-        content='Meeting on 7th April 2025'
-        tags='#Meeting'
-        isPinned={true}
-        onEdit={() => {}}
-        onDelete={() => {}}
-        onPinNote={() => {}}
-      />
-      <NoteCard 
-        title='Meeting on 7th April'
-        date='3rd Apr 2025'
-        content='Meeting on 7th April 2025'
-        tags='#Meeting'
-        isPinned={true}
-        onEdit={() => {}}
-        onDelete={() => {}}
-        onPinNote={() => {}}
-      />
-      <NoteCard 
-        title='Meeting on 7th April'
-        date='3rd Apr 2025'
-        content='Meeting on 7th April 2025'
-        tags='#Meeting'
-        isPinned={true}
-        onEdit={() => {}}
-        onDelete={() => {}}
-        onPinNote={() => {}}
-      />
-      <NoteCard 
-        title='Meeting on 7th April'
-        date='3rd Apr 2025'
-        content='Meeting on 7th April 2025'
-        tags='#Meeting'
-        isPinned={true}
-        onEdit={() => {}}
-        onDelete={() => {}}
-        onPinNote={() => {}}
-      /> */}
       </div>
       
     </div>
