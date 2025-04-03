@@ -1,8 +1,11 @@
 const jwt = require('jsonwebtoken');
 
 function authenticateToken(req, res, next) {
-    const authHeader = req.headers["authorization"]
+    const authHeader = req.headers["authorization"];
+    console.log("Authorization header:", authHeader); // Debug log
+
     const token = authHeader && authHeader.split(' ')[1];
+    console.log("Extracted token:", token); // Debug log
 
     if (!token) return res.sendStatus(401);
 
@@ -15,4 +18,4 @@ function authenticateToken(req, res, next) {
 
 module.exports = {
     authenticateToken,
-}
+};
