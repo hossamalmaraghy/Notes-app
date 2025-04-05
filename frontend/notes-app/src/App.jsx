@@ -7,7 +7,6 @@ import SignUp from './pages/SignUp/signup'
 const routes = (
   <Router>
     <Routes>
-    <Route path="/" element={<Navigate to="/login" replace />} />
       <Route path='/dashboard' exact element={<Home />}/>
       <Route path='/login' exact element={<Login />}/>
       <Route path='/signup' exact element={<SignUp />}/>
