@@ -5,7 +5,7 @@ A full-stack MERN Notes App built as a practice project to sharpen skills in mod
 ## Live Demo
 
 Experience the live Dashboard of the Notes App here:  
-[https://notesappfrontend-olive.vercel.app/dashboard](https://notesappfrontend-olive.vercel.app/dashboard)
+[https://notesappfrontend-olive.vercel.app/dashboard](https://notes-app-frontend-murex.vercel.app/login)
 
 ## Screenshots
 
