@@ -319,7 +319,7 @@ app.get('/search-notes/', authenticateToken, async (req, res) => {
         userId: user._id,
         $or: [
           { title: { $regex: new RegExp(query, 'i') } },
-          { content: { $regex: new RegExp(query, 'i') } },
+          {content: { $regex: new RegExp(query, 'i') } },
         ],
       });
 
@@ -336,8 +336,7 @@ app.get('/search-notes/', authenticateToken, async (req, res) => {
     }
   });
 
-  const port = process.env.PORT || 8000;
 
-app.listen(port, () => console.log(`Server running on port ${port}`));
+app.listen(8000);
 
 module.exports = app;
