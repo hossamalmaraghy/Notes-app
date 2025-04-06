@@ -336,7 +336,7 @@ app.get('/search-notes/', authenticateToken, async (req, res) => {
     }
   });
 
-  const port = process.env.PORT || 8000;
+  const port = process.env.PORT;
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
 
