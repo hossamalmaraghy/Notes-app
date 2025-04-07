@@ -57,7 +57,7 @@ app.post("/create-account", async (req, res) => {
     await user.save();
 
     const accessToken = jwt.sign({ user }, process.env.ACCESS_TOKEN_SECRET, {
-        expiresIn: '36000m',
+        expiresIn: '365d',
     });
 
     return res.json({
